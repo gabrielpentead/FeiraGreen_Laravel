@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CategoriaController;
+
 
 // Rotas Públicas
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
@@ -13,9 +15,17 @@ Route::get('/cadastro', [RegisterController::class, 'showRegistrationForm'])->na
 Route::post('/cadastro', [RegisterController::class, 'register'])->name('register.post');
 
 // Rotas Protegidas
-Route::middleware(['auth'])->group(function () {
+    Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [HomeController::class, 'dashboard'])->name('dashboard');
     Route::get('/', [HomeController::class, 'home'])->name('home');
+
+    //busca
+    Route::get('/buscar', [HomeController::class, 'buscar'])->name('buscar');
+
+    // Categorias
+    Route::get('/categoria/{categoria}', [CategoriaController::class, 'exibirPorCategoria'])
+        ->name('categoria.exibir');
+
 
     
     // Profile routes
@@ -56,4 +66,4 @@ Route::middleware(['auth'])->group(function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'home'])->name('home');

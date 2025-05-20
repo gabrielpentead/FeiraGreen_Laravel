@@ -219,4 +219,9 @@ class HomeController extends Controller
         $produto = Produto::findOrFail($id);
         return view('produto.show', compact('produto'));
     }
+    
+    public function index()
+{
+    return $this->home(); // Chama o método home existente
+}
 }

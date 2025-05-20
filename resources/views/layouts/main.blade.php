@@ -10,15 +10,16 @@
         <a href="{{ url('/') }}"><img src="{{ asset('imagens/logoverde.png') }}" alt="Logo" width="200"></a>
     </div>
     <div id="area-menu">
-        <a href="#">Frutas</a>
-        <a href="#">Verduras</a>
-        <a href="#">Hortaliças</a>
-        <a href="#">Legumes</a>
-        <a href="#">Outros</a>
+    <a href="{{ route('categoria.exibir', 'frutas') }}">Frutas</a>
+    <a href="{{ route('categoria.exibir', 'verduras') }}">Verduras</a>
+    <a href="{{ route('categoria.exibir', 'hortalicas') }}">Hortaliças</a>
+    <a href="{{ route('categoria.exibir', 'legumes') }}">Legumes</a>
+    <a href="{{ route('categoria.exibir', 'outros') }}">Outros</a>
+
     </div>
     <nav>
         <form method="GET" action="{{ url('buscar') }}" class="barra-pesquisa">
-            <input type="text" name="palavra" placeholder="Buscar produto..." required>
+            <input type="text" name="termo" placeholder="Buscar produto..." required>
             <button type="submit" class="botao-pesquisa">
                 <img src="{{ asset('imagens/pesquisa.png') }}" alt="Pesquisar" width="20">
             </button>
